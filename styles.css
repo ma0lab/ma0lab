@@ -1,0 +1,573 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 基本カラー */
+    --primary-color: #2d3436;
+    --secondary-color: #636e72;
+    --accent-color: #cca7ea;
+    --background-color: #ffffff;
+    --section-bg: #f8f9fa;
+    --border-color: #dfe6e9;
+
+    /* ブランドカラー */
+    --github-color: #333333;
+    --twitter-color: #333333;
+    --mail-color: #333333;
+
+    /* 技術スタックカラー */
+    --python-color: #3776AB;
+    --html-color: #E34F26;
+    --js-color: #F7DF1E;
+    --react-color: #61DAFB;
+    --java-color: #007396;
+    --postgres-color: #336791;
+    --photoshop-color: #31A8FF;
+
+    /* アニメーション */
+    --hover-transition: all 0.3s ease;
+}
+
+body {
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: var(--primary-color);
+    background-color: var(--background-color);
+    padding: 0;
+    margin: 0;
+}
+
+/* ヘッダー */
+header {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+}
+
+.header-text {
+    position: relative;
+    z-index: 2;
+}
+
+.header-text h1 {
+    font-size: 8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.header-text .subtitle {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-top: 1rem;
+    font-weight: 400;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.header-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        var(--accent-color) 0%, 
+        rgba(9, 132, 227, 0.2) 50%,
+        transparent 100%);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* レスポンシブ対応 - ヘッダー */
+@media (max-width: 768px) {
+    header {
+        height: 80vh;
+        min-height: 400px;
+    }
+
+    .header-text h1 {
+        font-size: 4rem;
+    }
+
+    .header-text .subtitle {
+        font-size: 1.4rem;
+    }
+}
+
+/* メインコンテンツ */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+section {
+    margin-bottom: 6rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4) { animation-delay: 0.4s; }
+section:nth-child(5) { animation-delay: 0.5s; }
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: none;
+    position: relative;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+ul {
+    list-style: none;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--section-bg);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-2px);
+}
+
+/* シンプルリスト */
+.simple-list {
+    display: block;
+    grid-template-columns: none;
+    gap: 0.5rem;
+    margin-left: 0;
+}
+
+.simple-list li {
+    background: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: none;
+}
+
+.simple-list li:last-child {
+    border-bottom: none;
+}
+
+.simple-list li:hover {
+    transform: none;
+}
+
+/* スキルセクション */
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.skills-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--section-bg);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: var(--hover-transition);
+}
+
+.skills-list li:hover {
+    transform: translateX(5px);
+    background-color: var(--background-color);
+    border-color: var(--accent-color);
+}
+
+.skill-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skill-info i {
+    font-size: 1.5rem;
+    width: 2rem;
+    text-align: center;
+    color: var(--accent-color);
+}
+
+.skill-name {
+    font-weight: 500;
+}
+
+.skill-years {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* アイコン固有の色 */
+.fa-python { color: var(--python-color); }
+.fa-html5 { color: var(--html-color); }
+.fa-js { color: var(--js-color); }
+.fa-react { color: var(--react-color); }
+.fa-java { color: var(--java-color); }
+.fa-database { color: var(--postgres-color); }
+.fa-image { color: var(--photoshop-color); }
+
+/* 制作実績 */
+.note {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 3rem;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.work-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--section-bg);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+}
+
+.work-item:hover {
+    transform: translateY(-2px);
+    background-color: #fff;
+    border-color: var(--accent-color);
+}
+
+.work-content {
+    flex: 1;
+}
+
+.work-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.work-item .description {
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.work-link {
+    margin-left: 2rem;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.work-item:hover .arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 連絡先・SNS */
+.social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: var(--hover-transition);
+    background-color: var(--section-bg);
+    border: 1px solid var(--border-color);
+}
+
+.social-link i {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    transition: var(--hover-transition);
+}
+
+.social-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.social-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.social-username {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    background-color: var(--background-color);
+}
+
+.social-link.github:hover {
+    border-color: var(--github-color);
+}
+
+.social-link.github:hover i {
+    color: var(--github-color);
+}
+
+.social-link.twitter:hover {
+    border-color: var(--twitter-color);
+}
+
+.social-link.twitter:hover i {
+    color: var(--twitter-color);
+}
+
+.social-link.contact-button {
+    background-color: var(--mail-color);
+}
+
+.social-link.contact-button i,
+.social-link.contact-button .social-name,
+.social-link.contact-button .social-username {
+    color: var(--background-color);
+}
+
+.social-link.contact-button:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .social-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--section-bg);
+    color: var(--secondary-color);
+    margin-top: 4rem;
+}
+
+/* リンク */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0070c9;
+}
+
+/* 得意なことセクション */
+.strengths-list {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.strengths-list li {
+    padding: 1.5rem;
+    font-weight: 500;
+}
+
+/* プロフィールヘッダー */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+}
+
+.header-titles {
+    flex: 1;
+}
+
+/* SNSアイコン */
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: var(--hover-transition);
+    background-color: var(--section-bg);
+    border: 1px solid var(--border-color);
+}
+
+.social-link i {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    transition: var(--hover-transition);
+}
+
+.social-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    background-color: var(--background-color);
+    border-color: var(--accent-color);
+}
+
+.social-link:hover i {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.social-link.github:hover {
+    border-color: var(--github-color);
+}
+
+.social-link.github:hover i {
+    color: var(--github-color);
+}
+
+.social-link.twitter:hover {
+    border-color: var(--twitter-color);
+}
+
+.social-link.twitter:hover i {
+    color: var(--twitter-color);
+}
+
+.social-link.contact-button {
+    background-color: var(--mail-color);
+}
+
+.social-link.contact-button .social-name,
+.social-link.contact-button .social-username,
+.social-link.contact-button i {
+    color: var(--background-color);
+}
+
+.social-link.contact-button:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.social-link.contact-button:hover i {
+    color: #fff;
+}
+
+/* レスポンシブ対応 - プロフィール */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .profile-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .social-link {
+        padding: 1.2rem;
+    }
+} 
