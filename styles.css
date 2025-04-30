@@ -74,6 +74,7 @@ header {
     margin: 0;
     line-height: 1;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: fadeInUp 0.8s ease-out;
@@ -288,64 +289,141 @@ li:hover {
 .note {
     font-size: 0.9rem;
     color: var(--secondary-color);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.works-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    color: var(--accent-color);
+    background-color: rgba(204, 167, 234, 0.1);
+}
+
+.tab-button.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.works-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.works-section {
+    position: relative;
+    margin: 4rem 0;
+}
+
+.work-category {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
 }
 
 .work-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
-.work-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.work-card {
+    position: relative;
+    display: block;
+    text-decoration: none;
     padding: 2rem;
-    background-color: var(--section-bg);
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     transition: all 0.3s ease;
-    text-decoration: none;
-    border: 1px solid var(--border-color);
 }
 
-.work-item:hover {
+.work-card:hover {
     transform: translateY(-2px);
-    background-color: #fff;
     border-color: var(--accent-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.work-content {
-    flex: 1;
+.work-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
-.work-item h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
+.work-status.active {
+    background-color: rgba(204, 167, 234, 0.1);
+    color: var(--accent-color);
+}
+
+.work-status.ended {
+    background-color: rgba(99, 110, 114, 0.1);
+    color: var(--secondary-color);
+}
+
+.work-card h4 {
+    font-size: 1.3rem;
     color: var(--primary-color);
+    margin: 0 0 0.75rem;
+    font-weight: 600;
 }
 
-.work-item .description {
+.work-card p {
     font-size: 0.95rem;
     color: var(--secondary-color);
+    line-height: 1.6;
     margin: 0;
 }
 
-.work-link {
-    margin-left: 2rem;
-}
+@media (max-width: 768px) {
+    .works-tabs {
+        gap: 0.75rem;
+    }
 
-.arrow {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.3s ease;
-}
+    .tab-button {
+        padding: 0.4rem 1.25rem;
+        font-size: 0.9rem;
+    }
 
-.work-item:hover .arrow {
-    opacity: 1;
-    transform: translateX(0);
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .work-card {
+        padding: 1.5rem;
+    }
+
+    .work-card h4 {
+        font-size: 1.2rem;
+    }
+
+    .work-status {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.2rem 0.6rem;
+        font-size: 0.75rem;
+    }
 }
 
 /* 連絡先・SNS */
@@ -570,4 +648,4 @@ a:hover {
     .social-link {
         padding: 1.2rem;
     }
-} 
+}

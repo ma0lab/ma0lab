@@ -99,62 +99,74 @@
         <section id="works">
             <h2>制作実績</h2>
             <p class="note">※以下はすべて2024年1月以降に開発し、公開許可を得ているものです。</p>
-            <div class="work-grid">
-                <a href="https://tips.jp/u/ma0lab/a/maopos/" class="work-item" target="_blank" rel="noopener noreferrer">
-                    <div class="work-content">
-                        <h3>maopos</h3>
-                        <p class="description">X（旧Twitter）の長文対応自動投稿予約ツール</p>
-                    </div>
-                    <div class="work-link">
-                        <span class="arrow">→</span>
-                    </div>
+
+            <div class="works-tabs">
+                <button class="tab-button active" data-tab="active">アクティブ</button>
+                <button class="tab-button" data-tab="closed">クローズ</button>
+            </div>
+
+            <div class="work-grid active" data-content="active">
+                <a href="https://pictorium.io" class="work-card" target="_blank" rel="noopener noreferrer">
+                    <h4>Pictorium</h4>
+                    <p>画像管理・共有サービス</p>
                 </a>
-                <a href="https://tips.jp/u/ma0lab/a/mauc/" class="work-item" target="_blank" rel="noopener noreferrer">
-                    <div class="work-content">
-                        <h3>mauc</h3>
-                        <p class="description">ヤフオク（オークタウン）の出品超効率化ツール</p>
-                    </div>
-                    <div class="work-link">
-                        <span class="arrow">→</span>
-                    </div>
+                <a href="https://note.com/maolab/n/nc4823d9adf7c" class="work-card">
+                    <h4>Deepis</h4>
+                    <p>Fanzaのリサーチサービス</p>
                 </a>
-                <a href="https://ma0lab.biz/yahuese/" class="work-item">
-                    <div class="work-content">
-                        <h3>yahuese</h3>
-                        <p class="description">ヤフオクの出品超効率化ツール（クローズド）</p>
-                    </div>
-                    <div class="work-link">
-                        <span class="arrow">→</span>
-                    </div>
+                <a href="https://tips.jp/u/ma0lab/a/mauc/" class="work-card" target="_blank" rel="noopener noreferrer">
+                    <h4>mauc</h4>
+                    <p>ヤフオク（オークタウン）の出品超効率化ツール</p>
                 </a>
-                <a href="https://note.com/maolab/membership" class="work-item">
-                    <div class="work-content">
-                        <h3>maotools</h3>
-                        <p class="description">業務効率化のためのツール群</p>
-                    </div>
-                    <div class="work-link">
-                        <span class="arrow">→</span>
-                    </div>
-                </a>
-                <a href="https://note.com/maolab/n/nc4823d9adf7c" class="work-item">
-                    <div class="work-content">
-                        <h3>Deepis</h3>
-                        <p class="description">Fanzaのリサーチサービス</p>
-                    </div>
-                    <div class="work-link">
-                        <span class="arrow">→</span>
-                    </div>
-                </a>
-                <a href="https://note.com/maolab" class="work-item">
-                    <div class="work-content">
-                        <h3>その他データ取得系</h3>
-                        <p class="description">各種取得データ公開コンテンツ</p>
-                    </div>
-                    <div class="work-link">
-                        <span class="arrow">→</span>
-                    </div>
+                <a href="https://ma0lab.biz/yahuese/" class="work-card">
+                    <h4>yahusse</h4>
+                    <p>ヤフオクの出品超効率化ツール（クローズド）</p>
                 </a>
             </div>
+
+            <div class="work-grid" data-content="closed" style="display: none;">
+                <a href="https://tips.jp/u/ma0lab/a/maopos/" class="work-card" target="_blank" rel="noopener noreferrer">
+                    <h4>maopos</h4>
+                    <p>X（旧Twitter）の長文対応自動投稿予約ツール</p>
+                </a>
+                <a href="https://note.com/maolab/membership" class="work-card">
+                    <h4>maotools</h4>
+                    <p>業務効率化のためのツール群</p>
+                </a>
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const tabs = document.querySelectorAll('.tab-button');
+                    const contents = document.querySelectorAll('.work-grid');
+
+                    function switchTab(tabId) {
+                        // タブの切り替え
+                        tabs.forEach(tab => {
+                            if (tab.dataset.tab === tabId) {
+                                tab.classList.add('active');
+                            } else {
+                                tab.classList.remove('active');
+                            }
+                        });
+
+                        // コンテンツの切り替え
+                        contents.forEach(content => {
+                            if (content.dataset.content === tabId) {
+                                content.style.display = 'grid';
+                            } else {
+                                content.style.display = 'none';
+                            }
+                        });
+                    }
+
+                    tabs.forEach(tab => {
+                        tab.addEventListener('click', () => {
+                            switchTab(tab.dataset.tab);
+                        });
+                    });
+                });
+            </script>
         </section>
 
         <section id="contact">
@@ -189,4 +201,4 @@
         <p>&copy; 2024 mao. All rights reserved.</p>
     </footer>
 </body>
-</html> 
+</html>
