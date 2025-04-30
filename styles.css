@@ -340,19 +340,68 @@ li:hover {
 
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
 
 .work-card {
     position: relative;
-    display: block;
+    display: grid;
+    grid-template-rows: 40px 48px 1fr auto;
     text-decoration: none;
     padding: 2rem;
     background: var(--background-color);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     transition: all 0.3s ease;
+    height: 320px;
+}
+
+.work-card h4 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 40px;
+}
+
+.work-description {
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    margin: 0;
+    line-height: 24px;
+    height: 48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+}
+
+.work-meta-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    height: 110px;
+}
+
+.work-period {
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 24px;
+}
+
+.stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    height: 76px;
+    overflow: hidden;
 }
 
 .work-card:hover {
@@ -361,68 +410,104 @@ li:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.work-status {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.work-status.active {
-    background-color: rgba(204, 167, 234, 0.1);
-    color: var(--accent-color);
-}
-
-.work-status.ended {
-    background-color: rgba(99, 110, 114, 0.1);
-    color: var(--secondary-color);
-}
-
 .work-card h4 {
     font-size: 1.3rem;
     color: var(--primary-color);
-    margin: 0 0 0.75rem;
+    margin: 0;
     font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
 }
 
-.work-card p {
+.work-description {
     font-size: 0.95rem;
     color: var(--secondary-color);
     line-height: 1.6;
+    margin: 1.25rem 0 0;
+}
+
+.work-meta-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.work-period {
+    color: var(--secondary-color);
+    font-size: 0.85rem;
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 24px;
+}
+
+.work-period i {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+.stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.25rem;
+    min-height: 60px;
+}
+
+.stack-tags .tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f2f2f2;
+    color: #666666;
+    font-size: 0.85rem;
+    padding: 0 12px;
+    height: 32px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    line-height: 1;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.stack-tags .tag:hover {
+    background-color: var(--accent-color);
+    color: #fff;
 }
 
 @media (max-width: 768px) {
-    .works-tabs {
-        gap: 0.75rem;
-    }
-
-    .tab-button {
-        padding: 0.4rem 1.25rem;
-        font-size: 0.9rem;
-    }
-
-    .work-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
     .work-card {
+        grid-template-rows: 36px 48px 1fr auto;
+        height: auto;
+        min-height: 300px;
         padding: 1.5rem;
     }
 
     .work-card h4 {
         font-size: 1.2rem;
+        line-height: 36px;
     }
 
-    .work-status {
-        top: 0.75rem;
-        right: 0.75rem;
-        padding: 0.2rem 0.6rem;
-        font-size: 0.75rem;
+    .work-description {
+        font-size: 0.9rem;
+    }
+
+    .work-meta-box {
+        height: 100px;
+        gap: 0.5rem;
+    }
+
+    .work-period {
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+
+    .stack-tags {
+        gap: 6px;
+        height: 68px;
     }
 }
 
@@ -648,4 +733,13 @@ a:hover {
     .social-link {
         padding: 1.2rem;
     }
+}
+/* .work-period section for development dates with icon */
+.work-period {
+  color: #777;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
