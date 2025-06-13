@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heroku セットアップガイド</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -842,6 +843,179 @@
             z-index: 1000;
         }
 
+        .team-simple-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .team-description {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .team-description p {
+            font-size: 1.2rem;
+            color: #2D3436;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .pricing-simple {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .pricing-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .price-item {
+            background: white;
+            border: 3px solid #E9ECEF;
+            border-radius: 20px;
+            padding: 40px 50px;
+            text-align: center;
+            width: 300px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .price-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            border-color: #6554AF;
+        }
+
+        .price-label {
+            font-size: 1.1rem;
+            color: #636E72;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .price-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #6554AF;
+            margin-bottom: 8px;
+        }
+
+        .price-desc {
+            font-size: 1rem;
+            color: #636E72;
+        }
+
+        .pricing-warning {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFECB3 100%);
+            border-radius: 12px;
+            color: #E65100;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 1px solid #FFE0B2;
+        }
+
+        .pricing-warning i {
+            font-size: 1.3rem;
+        }
+
+        .benefits-simple {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .benefit-simple {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 25px;
+            background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+            border-radius: 12px;
+            font-size: 1.05rem;
+            color: #2D3436;
+            border: 1px solid #E9ECEF;
+            transition: all 0.2s ease;
+        }
+
+        .benefit-simple:hover {
+            background: white;
+            box-shadow: 0 8px 20px rgba(101, 84, 175, 0.1);
+            border-color: #6554AF;
+        }
+
+        .benefit-simple i {
+            color: #6554AF;
+            width: 24px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .team-creation-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            height: 100%;
+        }
+
+        .team-steps-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .team-images-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .team-image-container {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border: 1px solid #E9ECEF;
+            background: #F8F9FA;
+        }
+
+        .team-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .image-caption {
+            padding: 12px 15px;
+            background: white;
+            border-top: 1px solid #E9ECEF;
+            font-size: 0.9rem;
+            color: #636E72;
+            font-weight: 500;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .slide {
                 padding: 25px;
@@ -890,7 +1064,7 @@
 <body>
     <div class="slideshow-container">
         <div class="slide-indicator">
-            <span id="current-slide">1</span> / <span id="total-slides">4</span>
+            <span id="current-slide">1</span> / <span id="total-slides">5</span>
         </div>
         <!-- スライド1: タイトル -->
         <div class="slide active">
@@ -919,15 +1093,19 @@
                     </div>
                     <div class="overview-item">
                         <div class="item-number">02</div>
-                        <div class="item-title">チーム作成</div>
+                        <div class="item-title">チーム目的・料金</div>
                     </div>
                     <div class="overview-item">
                         <div class="item-number">03</div>
+                        <div class="item-title">チーム作成手順</div>
+                    </div>
+                    <div class="overview-item">
+                        <div class="item-number">04</div>
                         <div class="item-title">開発者招待</div>
                     </div>
                 </div>
             </div>
-            <div class="slide-number">1/4</div>
+            <div class="slide-number">1/5</div>
         </div>
 
         <!-- スライド2: アカウント作成 -->
@@ -992,7 +1170,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">2/4</div>
+            <div class="slide-number">2/5</div>
         </div>
 
         <!-- スライド3: チーム作成 -->
@@ -1002,35 +1180,99 @@
                 <h2>Heroku チーム作成</h2>
             </div>
             <div class="slide-content">
-                <div class="description">
-                    <p>チームを作成することで、開発者を招待してツールのセットアップを簡単にできます。</p>
-                </div>
-                
-                <div class="steps-container">
-                    <h4>作成手順</h4>
-                    <ol class="step-list">
-                        <li>ログイン後、左上の「Personal」から「Create a team」をクリック</li>
-                        <li>チーム名を入力</li>
-                        <li>クレジットカードを追加</li>
-                        <li>「Create a Team」で作成</li>
-                    </ol>
-                </div>
-                
-                <div class="warning">
-                    <div class="warning-header">料金について</div>
-                    <div class="warning-content">
-                        <p>チーム作成には<strong>クレジットカードの追加</strong>が必須です。</p>
-                        <p>5人までのチームは<strong>無料</strong>で利用できます（$10/月の料金は6人目から）。</p>
+                <div class="team-simple-layout">
+                    <div class="team-description">
+                        <p>チームを作成することで、開発者を招待してツールのセットアップを簡単にできます。</p>
+                    </div>
+                    
+                    <div class="pricing-simple">
+                        <div class="pricing-row">
+                            <div class="price-item">
+                                <div class="price-label">無料プラン</div>
+                                <div class="price-value">$0/月</div>
+                                <div class="price-desc">5人まで</div>
+                            </div>
+                            <div class="price-item">
+                                <div class="price-label">拡張プラン</div>
+                                <div class="price-value">$10/月</div>
+                                <div class="price-desc">6人目以降</div>
+                            </div>
+                        </div>
+                        <div class="pricing-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            チーム作成にはクレジットカードの登録が必要です
+                        </div>
+                    </div>
+                    
+                    <div class="benefits-simple">
+                        <div class="benefit-simple">
+                            <i class="fas fa-users"></i>
+                            <span>複数開発者での共同作業</span>
+                        </div>
+                        <div class="benefit-simple">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>統一されたプロジェクト管理</span>
+                        </div>
+                        <div class="benefit-simple">
+                            <i class="fas fa-credit-card"></i>
+                            <span>料金の一元管理</span>
+                        </div>
+                        <div class="benefit-simple">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>権限とセキュリティ</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="slide-number">3/4</div>
+            <div class="slide-number">3/5</div>
         </div>
 
-        <!-- スライド4: 開発者招待 -->
+        <!-- スライド4: チーム作成手順 -->
         <div class="slide">
             <div class="slide-header">
-                <div class="icon-circle invite">4</div>
+                <div class="icon-circle team">4</div>
+                <h2>チーム作成手順</h2>
+            </div>
+            <div class="slide-content">
+                <div class="team-creation-layout">
+                    <div class="team-steps-section">
+                        <div class="steps-container">
+                            <h4>作成手順</h4>
+                            <ol class="step-list">
+                                <li>ログイン後、左上の「Personal」から「Create a team」をクリック</li>
+                                <li>チーム名を入力</li>
+                                <li>クレジットカードを追加</li>
+                                <li>「Create a Team」で作成</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="warning">
+                            <div class="warning-header">重要事項</div>
+                            <div class="warning-content">
+                                <p>支払い情報の入力は必須ですが、5人までは無料で利用できます。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-images-section">
+                        <div class="team-image-container">
+                            <img src="../assets/images/heroku_3.png" alt="チーム作成フォーム" class="team-image">
+                            <div class="image-caption">チーム作成フォーム</div>
+                        </div>
+                        <div class="team-image-container">
+                            <img src="../assets/images/heroku_4.png" alt="チーム作成完了" class="team-image">
+                            <div class="image-caption">作成完了画面</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">4/5</div>
+        </div>
+
+        <!-- スライド5: 開発者招待 -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="icon-circle invite">5</div>
                 <h2>開発者の招待</h2>
             </div>
             <div class="slide-content">
@@ -1078,7 +1320,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">4/4</div>
+            <div class="slide-number">5/5</div>
         </div>
 
         <div class="navigation">
@@ -1090,6 +1332,7 @@
                     <div class="progress-step" onclick="goToSlide(1)"></div>
                     <div class="progress-step" onclick="goToSlide(2)"></div>
                     <div class="progress-step" onclick="goToSlide(3)"></div>
+                    <div class="progress-step" onclick="goToSlide(4)"></div>
                 </div>
             </div>
             <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">次へ →</button>
