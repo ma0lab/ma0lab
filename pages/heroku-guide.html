@@ -973,7 +973,7 @@
 
         .team-creation-redesigned {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             height: 100%;
             gap: 25px;
         }
@@ -1091,18 +1091,27 @@
             display: block;
         }
 
-        .bottom-navigation {
-            display: flex;
-            justify-content: center;
+        .left-navigation {
+            width: 150px;
+            flex-shrink: 0;
         }
 
-        .step-nav {
+        .step-nav-vertical {
             display: flex;
-            gap: 40px;
+            flex-direction: column;
+            gap: 15px;
             background: white;
-            padding: 20px 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            padding: 20px 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .main-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
         }
 
         .step-nav-item {
@@ -1111,9 +1120,9 @@
             align-items: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            padding: 15px 20px;
-            border-radius: 12px;
-            min-width: 100px;
+            padding: 12px 8px;
+            border-radius: 8px;
+            min-width: auto;
         }
 
         .step-nav-item:hover {
@@ -1129,8 +1138,8 @@
         }
 
         .step-number {
-            width: 40px;
-            height: 40px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             background: #E9ECEF;
             color: #636E72;
@@ -1138,8 +1147,8 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
             transition: all 0.3s ease;
         }
 
@@ -1149,7 +1158,7 @@
         }
 
         .step-nav-item span {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             font-weight: 500;
             text-align: center;
             color: #636E72;
@@ -1391,7 +1400,24 @@
             </div>
             <div class="slide-content">
                 <div class="team-creation-redesigned">
-                    <div class="top-section">
+                    <div class="left-navigation">
+                        <div class="step-nav-vertical">
+                            <div class="step-nav-item active" onclick="showStep(1, event)">
+                                <div class="step-number">1</div>
+                                <span>Personal クリック</span>
+                            </div>
+                            <div class="step-nav-item" onclick="showStep(2, event)">
+                                <div class="step-number">2</div>
+                                <span>Create a team</span>
+                            </div>
+                            <div class="step-nav-item" onclick="showStep(3, event)">
+                                <div class="step-number">3</div>
+                                <span>チーム作成</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-content">
                         <div class="description-panel">
                             <div class="step-content active" id="step-1">
                                 <h4><span style="background: #6554AF; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px;">1</span>「Personal」をクリック</h4>
@@ -1440,23 +1466,6 @@
                                 <img src="../assets/images/heroku_2.png" alt="Personal をクリック" class="main-image active clickable-image" onclick="openModal(this)" id="image-1">
                                 <img src="../assets/images/heroku_3.png" alt="チーム作成フォーム" class="main-image clickable-image" onclick="openModal(this)" id="image-2">
                                 <img src="../assets/images/heroku_4.png" alt="作成完了" class="main-image clickable-image" onclick="openModal(this)" id="image-3">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bottom-navigation">
-                        <div class="step-nav">
-                            <div class="step-nav-item active" onclick="showStep(1)">
-                                <div class="step-number">1</div>
-                                <span>Personal クリック</span>
-                            </div>
-                            <div class="step-nav-item" onclick="showStep(2)">
-                                <div class="step-number">2</div>
-                                <span>Create a team</span>
-                            </div>
-                            <div class="step-nav-item" onclick="showStep(3)">
-                                <div class="step-number">3</div>
-                                <span>チーム作成</span>
                             </div>
                         </div>
                     </div>
@@ -1627,24 +1636,39 @@
         });
 
         // ステップ表示機能
-        function showStep(stepNumber) {
+        function showStep(stepNumber, event) {
+            // イベントの伝播を停止
+            if (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            
             // ステップコンテンツの切り替え
             document.querySelectorAll('.step-content').forEach(content => {
                 content.classList.remove('active');
             });
-            document.getElementById('step-' + stepNumber).classList.add('active');
+            const stepElement = document.getElementById('step-' + stepNumber);
+            if (stepElement) {
+                stepElement.classList.add('active');
+            }
             
             // 画像の切り替え
             document.querySelectorAll('.main-image').forEach(image => {
                 image.classList.remove('active');
             });
-            document.getElementById('image-' + stepNumber).classList.add('active');
+            const imageElement = document.getElementById('image-' + stepNumber);
+            if (imageElement) {
+                imageElement.classList.add('active');
+            }
             
             // ナビゲーションの切り替え
             document.querySelectorAll('.step-nav-item').forEach(item => {
                 item.classList.remove('active');
             });
-            document.querySelectorAll('.step-nav-item')[stepNumber - 1].classList.add('active');
+            const navItems = document.querySelectorAll('.step-nav-item');
+            if (navItems[stepNumber - 1]) {
+                navItems[stepNumber - 1].classList.add('active');
+            }
         }
 
         // 初期化
