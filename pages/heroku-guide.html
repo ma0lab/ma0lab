@@ -1171,6 +1171,53 @@
             color: white;
         }
 
+        .step-content .field-grid-compact {
+            display: grid !important;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .step-content .field-item-compact {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: white !important;
+            border-radius: 8px;
+            border: 1px solid #E9ECEF;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-content .field-item-compact:hover {
+            border-color: #6554AF;
+            box-shadow: 0 2px 8px rgba(101, 84, 175, 0.1);
+        }
+
+        .step-content .field-label-compact {
+            font-weight: 600 !important;
+            color: #6554AF !important;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+
+        .step-content .field-value-compact {
+            color: #636E72 !important;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+
+        /* ステップ3の旧スタイルを無効化 */
+        #step-3 .step-details {
+            display: none !important;
+        }
+
+        #step-3 .field-grid-compact {
+            display: grid !important;
+        }
+
         /* 画像拡大モーダル */
         .image-modal {
             display: none;
@@ -1453,13 +1500,31 @@
                             <div class="step-content" id="step-3">
                                 <h4><span style="background: #6554AF; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px;">3</span>クレジットカード入力の補足</h4>
                                 <p>日本在住の方向けに、わかりづらい入力項目の記入例を示します。</p>
-                                <div class="step-details">
-                                    <li><strong>Country:</strong> Japan を選択</li>
-                                    <li><strong>Billing address line 1:</strong> 町名・番地（例: 1-2-3 Sakae）</li>
-                                    <li><strong>Billing address line 2:</strong> 建物名・部屋番号（例: ABC Building 4F）</li>
-                                    <li><strong>City:</strong> 市区町村を英語で（例: Nagoya）</li>
-                                    <li><strong>State/Province:</strong> 都道府県を英語で（例: Aichi）</li>
-                                    <li><strong>Postal code:</strong> ハイフンなしで入力（例: 4600008）</li>
+                                <div class="field-grid-compact">
+                                    <div class="field-item-compact">
+                                        <span class="field-label-compact">Country</span>
+                                        <span class="field-value-compact">Japan を選択</span>
+                                    </div>
+                                    <div class="field-item-compact">
+                                        <span class="field-label-compact">Billing address line 1</span>
+                                        <span class="field-value-compact">町名・番地（例: 1-2-3 Sakae）</span>
+                                    </div>
+                                    <div class="field-item-compact">
+                                        <span class="field-label-compact">Billing address line 2</span>
+                                        <span class="field-value-compact">建物名・部屋番号（例: ABC Building 4F）</span>
+                                    </div>
+                                    <div class="field-item-compact">
+                                        <span class="field-label-compact">City</span>
+                                        <span class="field-value-compact">市区町村を英語で（例: Nagoya）</span>
+                                    </div>
+                                    <div class="field-item-compact">
+                                        <span class="field-label-compact">State/Province</span>
+                                        <span class="field-value-compact">都道府県を英語で（例: Aichi）</span>
+                                    </div>
+                                    <div class="field-item-compact">
+                                        <span class="field-label-compact">Postal code</span>
+                                        <span class="field-value-compact">ハイフンなしで入力（例: 4600008）</span>
+                                    </div>
                                 </div>
                                 <div class="warning-compact">
                                     <i class="fas fa-info-circle"></i>
