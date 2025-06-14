@@ -971,49 +971,259 @@
             font-size: 1.2rem;
         }
 
-        .team-creation-layout {
+        .team-creation-redesigned {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            gap: 25px;
+        }
+
+        .top-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            height: 100%;
-        }
-
-        .team-steps-section {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .team-images-section {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .team-image-container {
+            gap: 25px;
             flex: 1;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-            border: 1px solid #E9ECEF;
-            background: #F8F9FA;
+            min-height: 350px;
         }
 
-        .team-image {
+        .description-panel {
+            background: #F8F9FA;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-content {
+            display: none;
+            flex: 1;
+        }
+
+        .step-content.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-content h4 {
+            color: #6554AF;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .step-content p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #636E72;
+            line-height: 1.6;
+        }
+
+        .step-details {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            flex: 1;
+        }
+
+        .step-details li {
+            padding: 10px 0 10px 25px;
+            position: relative;
+            font-size: 0.95rem;
+            color: #2D3436;
+            line-height: 1.5;
+        }
+
+        .step-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: #6554AF;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .warning-compact {
+            background: #FFF3E0;
+            border-left: 4px solid #FF9800;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #E65100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .main-image-container {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .main-image {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: contain;
+            display: none;
+        }
+
+        .main-image.active {
             display: block;
         }
 
-        .image-caption {
-            padding: 12px 15px;
+        .bottom-navigation {
+            display: flex;
+            justify-content: center;
+        }
+
+        .step-nav {
+            display: flex;
+            gap: 40px;
             background: white;
-            border-top: 1px solid #E9ECEF;
-            font-size: 0.9rem;
+            padding: 20px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 15px 20px;
+            border-radius: 12px;
+            min-width: 100px;
+        }
+
+        .step-nav-item:hover {
+            background: #F8F9FA;
+            transform: translateY(-2px);
+        }
+
+        .step-nav-item.active {
+            background: linear-gradient(135deg, #6554AF, #9C7CE8);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(101, 84, 175, 0.3);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #E9ECEF;
             color: #636E72;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .step-nav-item.active .step-number {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .step-nav-item span {
+            font-size: 0.9rem;
             font-weight: 500;
             text-align: center;
+            color: #636E72;
+        }
+
+        .step-nav-item.active span {
+            color: white;
+        }
+
+        /* 画像拡大モーダル */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* クリック可能な画像のスタイル */
+        .clickable-image {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clickable-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         @media (max-width: 768px) {
@@ -1105,7 +1315,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">1/5</div>
+            <div class="slide-number">1/4</div>
         </div>
 
         <!-- スライド2: アカウント作成 -->
@@ -1156,7 +1366,7 @@
 
                     <div class="account-visual-section">
                         <div class="heroku-signup-image">
-                            <img src="../assets/images/heroku_1.png" alt="Heroku登録画面" class="signup-screenshot">
+                            <img src="../assets/images/heroku_1.png" alt="Heroku登録画面" class="signup-screenshot clickable-image" onclick="openModal(this)">
                         </div>
 
                         <div class="important-notes-unified">
@@ -1170,109 +1380,96 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">2/5</div>
+            <div class="slide-number">2/4</div>
         </div>
 
-        <!-- スライド3: チーム作成 -->
+        <!-- スライド3: チーム作成手順 -->
         <div class="slide">
             <div class="slide-header">
                 <div class="icon-circle team">3</div>
-                <h2>Heroku チーム作成</h2>
-            </div>
-            <div class="slide-content">
-                <div class="team-simple-layout">
-                    <div class="team-description">
-                        <p>チームを作成することで、開発者を招待してツールのセットアップを簡単にできます。</p>
-                    </div>
-                    
-                    <div class="pricing-simple">
-                        <div class="pricing-row">
-                            <div class="price-item">
-                                <div class="price-label">無料プラン</div>
-                                <div class="price-value">$0/月</div>
-                                <div class="price-desc">5人まで</div>
-                            </div>
-                            <div class="price-item">
-                                <div class="price-label">拡張プラン</div>
-                                <div class="price-value">$10/月</div>
-                                <div class="price-desc">6人目以降</div>
-                            </div>
-                        </div>
-                        <div class="pricing-warning">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            チーム作成にはクレジットカードの登録が必要です
-                        </div>
-                    </div>
-                    
-                    <div class="benefits-simple">
-                        <div class="benefit-simple">
-                            <i class="fas fa-users"></i>
-                            <span>複数開発者での共同作業</span>
-                        </div>
-                        <div class="benefit-simple">
-                            <i class="fas fa-project-diagram"></i>
-                            <span>統一されたプロジェクト管理</span>
-                        </div>
-                        <div class="benefit-simple">
-                            <i class="fas fa-credit-card"></i>
-                            <span>料金の一元管理</span>
-                        </div>
-                        <div class="benefit-simple">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>権限とセキュリティ</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-number">3/5</div>
-        </div>
-
-        <!-- スライド4: チーム作成手順 -->
-        <div class="slide">
-            <div class="slide-header">
-                <div class="icon-circle team">4</div>
                 <h2>チーム作成手順</h2>
             </div>
             <div class="slide-content">
-                <div class="team-creation-layout">
-                    <div class="team-steps-section">
-                        <div class="steps-container">
-                            <h4>作成手順</h4>
-                            <ol class="step-list">
-                                <li>ログイン後、左上の「Personal」から「Create a team」をクリック</li>
-                                <li>チーム名を入力</li>
-                                <li>クレジットカードを追加</li>
-                                <li>「Create a Team」で作成</li>
-                            </ol>
+                <div class="team-creation-redesigned">
+                    <div class="top-section">
+                        <div class="description-panel">
+                            <div class="step-content active" id="step-1">
+                                <h4><span style="background: #6554AF; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px;">1</span>「Personal」をクリック</h4>
+                                <p>ログイン後、左上の「Personal」をクリックしてドロップダウンメニューを開きます。</p>
+                                <div class="step-details">
+                                    <li>Herokuダッシュボードにログイン</li>
+                                    <li>画面左上の「Personal」をクリック</li>
+                                    <li>ドロップダウンメニューが表示される</li>
+                                </div>
+                                <div class="warning-compact">
+                                    <i class="fas fa-info-circle"></i>
+                                    ログイン直後は「Personal」が選択されています
+                                </div>
+                            </div>
+                            
+                            <div class="step-content" id="step-2">
+                                <h4><span style="background: #6554AF; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px;">2</span>「Create a team」を選択</h4>
+                                <p>表示されたメニューから「Create a team」をクリックします。</p>
+                                <div class="step-details">
+                                    <li>メニュー内の「Create a team」を見つける</li>
+                                    <li>クリックしてチーム作成画面に移動</li>
+                                </div>
+                                <div class="warning-compact">
+                                    <i class="fas fa-info-circle"></i>
+                                    チーム作成には支払い情報の登録が必要です
+                                </div>
+                            </div>
+                            
+                            <div class="step-content" id="step-3">
+                                <h4><span style="background: #6554AF; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px;">3</span>チーム情報を入力</h4>
+                                <p>チーム名とクレジットカード情報を入力して、チームを作成します。</p>
+                                <div class="step-details">
+                                    <li>Team Name: チーム名を入力</li>
+                                    <li>クレジットカード情報を追加</li>
+                                    <li>「Create Team」をクリック</li>
+                                </div>
+                                <div class="warning-compact">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    5人まで無料、6人目以降は$10/月
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="warning">
-                            <div class="warning-header">重要事項</div>
-                            <div class="warning-content">
-                                <p>支払い情報の入力は必須ですが、5人までは無料で利用できます。</p>
+
+                        <div class="image-panel">
+                            <div class="main-image-container">
+                                <img src="../assets/images/heroku_2.png" alt="Personal をクリック" class="main-image active clickable-image" onclick="openModal(this)" id="image-1">
+                                <img src="../assets/images/heroku_3.png" alt="チーム作成フォーム" class="main-image clickable-image" onclick="openModal(this)" id="image-2">
+                                <img src="../assets/images/heroku_4.png" alt="作成完了" class="main-image clickable-image" onclick="openModal(this)" id="image-3">
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="team-images-section">
-                        <div class="team-image-container">
-                            <img src="../assets/images/heroku_3.png" alt="チーム作成フォーム" class="team-image">
-                            <div class="image-caption">チーム作成フォーム</div>
-                        </div>
-                        <div class="team-image-container">
-                            <img src="../assets/images/heroku_4.png" alt="チーム作成完了" class="team-image">
-                            <div class="image-caption">作成完了画面</div>
+
+                    <div class="bottom-navigation">
+                        <div class="step-nav">
+                            <div class="step-nav-item active" onclick="showStep(1)">
+                                <div class="step-number">1</div>
+                                <span>Personal クリック</span>
+                            </div>
+                            <div class="step-nav-item" onclick="showStep(2)">
+                                <div class="step-number">2</div>
+                                <span>Create a team</span>
+                            </div>
+                            <div class="step-nav-item" onclick="showStep(3)">
+                                <div class="step-number">3</div>
+                                <span>チーム作成</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="slide-number">4/5</div>
+            <div class="slide-number">3/4</div>
         </div>
 
-        <!-- スライド5: 開発者招待 -->
+
+        <!-- スライド4: 開発者招待 -->
         <div class="slide">
             <div class="slide-header">
-                <div class="icon-circle invite">5</div>
+                <div class="icon-circle invite">4</div>
                 <h2>開発者の招待</h2>
             </div>
             <div class="slide-content">
@@ -1320,7 +1517,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">5/5</div>
+            <div class="slide-number">4/4</div>
         </div>
 
         <div class="navigation">
@@ -1332,10 +1529,17 @@
                     <div class="progress-step" onclick="goToSlide(1)"></div>
                     <div class="progress-step" onclick="goToSlide(2)"></div>
                     <div class="progress-step" onclick="goToSlide(3)"></div>
-                    <div class="progress-step" onclick="goToSlide(4)"></div>
                 </div>
             </div>
             <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">次へ →</button>
+        </div>
+
+        <!-- 画像拡大モーダル -->
+        <div id="imageModal" class="image-modal" onclick="closeModal()">
+            <span class="modal-close">&times;</span>
+            <div class="modal-content">
+                <img id="modalImage" class="modal-image" src="" alt="">
+            </div>
         </div>
     </div>
 
@@ -1392,6 +1596,56 @@
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
         });
+
+
+        // 画像拡大モーダル機能
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            
+            // ボディのスクロールを無効化
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            
+            // ボディのスクロールを有効化
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESCキーでモーダルを閉じる
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // ステップ表示機能
+        function showStep(stepNumber) {
+            // ステップコンテンツの切り替え
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('step-' + stepNumber).classList.add('active');
+            
+            // 画像の切り替え
+            document.querySelectorAll('.main-image').forEach(image => {
+                image.classList.remove('active');
+            });
+            document.getElementById('image-' + stepNumber).classList.add('active');
+            
+            // ナビゲーションの切り替え
+            document.querySelectorAll('.step-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.step-nav-item')[stepNumber - 1].classList.add('active');
+        }
 
         // 初期化
         showSlide(currentSlide);
