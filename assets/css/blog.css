@@ -1,0 +1,305 @@
+/* ブログ用共通スタイル */
+
+/* ブログ風レイアウト */
+.blog-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--background-color);
+    line-height: 1.7;
+}
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blog-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.blog-subtitle {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.blog-content {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.blog-content h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin: 3rem 0 1.5rem 0;
+    font-weight: 600;
+    position: relative;
+    padding-left: 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.blog-content h3 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin: 2rem 0 1rem 0;
+    font-weight: 600;
+}
+
+.blog-content h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin: 1.5rem 0 0.8rem 0;
+    font-weight: 600;
+}
+
+.blog-content p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.blog-content strong {
+    font-weight: 600;
+}
+
+.blog-image {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.blog-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.blog-image-caption {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* 再利用可能なコンポーネント */
+.info-box {
+    background-color: #fffbf0;
+    border: 1px solid #f4e04d;
+    border-left: 4px solid #f4e04d;
+    padding: 1.5rem;
+    border-radius: 4px;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+}
+
+.info-box-title {
+    font-weight: bold;
+    color: #8b6914;
+    margin-bottom: 0.5rem;
+}
+
+.info-box-content {
+    color: #7c5e0a;
+    line-height: 1.6;
+}
+
+.external-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.external-link:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: var(--hover-transition);
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+}
+
+/* リストのスタイル - info-boxのグレー版 */
+.blog-content > ul, .blog-content > ol {
+    background-color: #f8f9fa;
+    border: 1px solid #d6d8db;
+    border-left: 4px solid #6c757d;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 4px;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+}
+
+
+.blog-content > ul li, .blog-content > ol li {
+    color: #495057;
+    line-height: 1.6;
+    padding: 0.2rem 0;
+    margin-bottom: 0;
+    margin-left: 1.5rem;
+}
+
+/* info-box内のリストは通常のスタイル */
+.info-box ul, .info-box ol {
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 0 0 1.5rem;
+    margin: 0.5rem 0;
+    border-left: none;
+    position: static;
+    transition: none;
+}
+
+.info-box ul::before, .info-box ol::before {
+    display: none;
+}
+
+.info-box ul li, .info-box ol li {
+    line-height: 1.6;
+    padding: 0.2rem 0;
+    color: #7c5e0a;
+    font-weight: normal;
+    position: static;
+    transition: none;
+}
+
+.info-box ul li::marker, .info-box ol li::marker {
+    color: #7c5e0a;
+    font-weight: normal;
+}
+
+/* 目次(TOC)のスタイル */
+.toc-container {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-left: 4px solid #28a745;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 4px;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+}
+
+.toc-title {
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.5rem;
+}
+
+.toc-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    counter-reset: h2-counter;
+}
+
+.toc-list li {
+    margin: 0.8rem 0;
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.toc-list .toc-h2 {
+    margin-left: 1rem;
+    counter-increment: h2-counter;
+    counter-reset: h3-counter;
+}
+
+.toc-list .toc-h3 {
+    margin-left: 3rem;
+    counter-increment: h3-counter;
+}
+
+.toc-h2 .toc-link::before {
+    content: counter(h2-counter) ". ";
+    font-weight: bold;
+    color: #28a745;
+    margin-right: 0.5rem;
+}
+
+.toc-h3 .toc-link::before {
+    content: counter(h2-counter) "." counter(h3-counter) " ";
+    font-weight: normal;
+    color: #6c757d;
+    margin-right: 0.5rem;
+}
+
+.toc-link {
+    color: #495057;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.toc-link:hover {
+    color: #28a745;
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+@media (max-width: 768px) {
+    .blog-container {
+        padding: 1rem;
+    }
+    
+    .blog-title {
+        font-size: 2rem;
+    }
+    
+    .blog-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .blog-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .toc-container {
+        max-width: 95%;
+    }
+}
