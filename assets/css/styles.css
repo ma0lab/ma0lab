@@ -14,8 +14,11 @@
     --section-bg: #f8f9fa;
     --border-color: #dfe6e9;
     --header-height: 100vh;
+    --blog-background-color: #d9d9d9;
 
     /* ブランドカラー */
+    --brand-primary: #cca7ea;
+    --brand-secondary: #a085c7;
     --github-color: #333333;
     --twitter-color: #333333;
     --mail-color: #333333;
